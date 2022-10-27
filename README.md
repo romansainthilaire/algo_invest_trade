@@ -13,9 +13,9 @@ Les règles sont les suivantes :
 - Il est impossible d'acheter une fraction d'action.
 - Le client peut dépenser au maximum 500 euros.
 
-Deux algorithmes peuvent être utilisés:
+Deux algorithmes peuvent être utilisés :
 - bruteforce.py : teste toutes les combinaisons d'achats possibles et affiche la combinaison optimale.
-- optimized.py : determine et affiche la combinaison d'achats jugée optimale.
+- optimized.py : détermine et affiche la combinaison d'achats jugée optimale.
 
 Attention : le script bruteforce.py ne fonctionne qu'avec un nombre d'actions limité (≤ 20)
 
