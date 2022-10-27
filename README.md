@@ -14,10 +14,10 @@ Les règles sont les suivantes :
 - Le client peut dépenser au maximum 500 euros.
 
 Deux algorithmes peuvent être utilisés :
-- bruteforce.py : teste toutes les combinaisons d'achats possibles et affiche la combinaison optimale.
-- optimized.py : détermine et affiche la combinaison d'achats jugée optimale.
+- *bruteforce.py* : teste toutes les combinaisons d'achats possibles et affiche la combinaison optimale.
+- *optimized.py* : détermine et affiche la combinaison d'achats jugée optimale.
 
-Attention : le script bruteforce.py ne fonctionne qu'avec un nombre d'actions limité (≤ 20)
+Attention : le script *bruteforce.py* ne fonctionne qu'avec un nombre d'actions limité (≤ 20)
 
 ## Fichiers csv
 - Les actions doivent être stockées dans un fichier csv.
