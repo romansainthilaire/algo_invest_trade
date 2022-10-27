@@ -2,7 +2,7 @@ import csv
 from pathlib import Path
 from datetime import datetime
 
-CSV_FILE_NAME = "dataset1_Python+P7.csv"
+CSV_FILE_NAME = "dataset1.csv"
 CSV_DELIMITER = ";"
 MAX_SPENDING = 500  # Maximum amount of money the client is willing to spend
 

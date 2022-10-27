@@ -3,7 +3,7 @@ from pathlib import Path
 from datetime import datetime
 from itertools import combinations
 
-CSV_FILE_NAME = "dataset0_Python+P7.csv"
+CSV_FILE_NAME = "dataset0.csv"
 CSV_DELIMITER = ";"
 MAX_SPENDING = 500  # Maximum amount of money the client is willing to spend
 
