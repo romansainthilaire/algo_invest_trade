@@ -1,6 +1,7 @@
 import csv
 from pathlib import Path
 from datetime import datetime
+import tracemalloc
 
 CSV_FILE_NAME = "dataset1.csv"
 CSV_DELIMITER = ";"
@@ -67,6 +68,7 @@ def get_purchased_shares(shares):
 
 if __name__ == "__main__":
 
+    tracemalloc.start()
     start = datetime.now()
 
     shares = get_shares_sorted_by_profit_rate()
@@ -81,5 +83,11 @@ if __name__ == "__main__":
     print(f"Total profit : {total_profit:.2f} €")
 
     end = datetime.now()
+    snapshot = tracemalloc.take_snapshot()
 
     print(f"\n{(end - start).total_seconds():.3f} seconds")
+
+    total_size = 0
+    for stat in snapshot.statistics("lineno"):
+        total_size += stat.size
+    print(f"{total_size / 1000:.0f} kb")

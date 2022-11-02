@@ -2,6 +2,7 @@ import csv
 from pathlib import Path
 from datetime import datetime
 from itertools import combinations
+import tracemalloc
 
 CSV_FILE_NAME = "dataset0.csv"
 CSV_DELIMITER = ";"
@@ -101,6 +102,7 @@ def get_strategies_sorted_by_total_profit(combinations_of_purchased_shares):
 
 if __name__ == "__main__":
 
+    tracemalloc.start()
     start = datetime.now()
 
     shares = get_shares()
@@ -116,6 +118,12 @@ if __name__ == "__main__":
     print(f"Total profit : {best_strategy['total_profit']:.2f} €")
 
     end = datetime.now()
+    snapshot = tracemalloc.take_snapshot()
 
     print(f"\n{len(strategies_sorted_by_total_profit):,} combinations analized".replace(",", " "))
     print(f"{(end - start).total_seconds():.2f} seconds")
+
+    total_size = 0
+    for stat in snapshot.statistics("lineno"):
+        total_size += stat.size
+    print(f"{total_size / 1000:.0f} kb")
