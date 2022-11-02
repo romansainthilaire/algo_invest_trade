@@ -71,6 +71,8 @@ def get_combinations_of_purchased_shares(combinations_of_shares):
             if spending_left >= share["price"]:
                 combination_of_purchased_shares.append(share)
                 spending_left -= share["price"]
+            else:
+                break
         combinations_of_purchased_shares.append(combination_of_purchased_shares)
     return combinations_of_purchased_shares
 
