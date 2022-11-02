@@ -79,7 +79,7 @@ def get_combinations_of_purchased_shares(combinations_of_shares):
 
 def get_strategies_sorted_by_total_profit(combinations_of_purchased_shares):
     """Gets all strategies sorted by total profit.
-       A stragtegy is a combination of purchased shares with a total cost and a total profit.
+       A stragtegy is a combination of purchased shares with a total profit.
 
     Arguments:
         combinations_of_purchased_shares -- list of combinations of purchased shares
@@ -89,18 +89,12 @@ def get_strategies_sorted_by_total_profit(combinations_of_purchased_shares):
     """
     strategies = []
     for combination_of_purchased_shares in combinations_of_purchased_shares:
-        total_cost = 0
-        total_profit = 0
         strategy = dict()
-        strategy["purchased_shares"] = ""
+        strategy["shares"] = []
+        strategy["total_profit"] = 0
         for share in combination_of_purchased_shares:
-            total_cost += share["price"]
-            total_profit += share["profit"]
-            strategy["purchased_shares"] += (
-                f"{share['name']} : {share['price']:.2f} € x {share['profit_rate']:.2f} % = {share['profit']:.2f} €\n"
-            )
-        strategy["total_cost"] = total_cost
-        strategy["total_profit"] = total_profit
+            strategy["shares"].append(share)
+            strategy["total_profit"] += share["profit"]
         strategies.append(strategy)
     return sorted(strategies, key=lambda strategy: -strategy["total_profit"])
 
@@ -114,8 +108,11 @@ if __name__ == "__main__":
     combinations_of_purchased_shares = get_combinations_of_purchased_shares(combinations_of_shares)
     strategies_sorted_by_total_profit = get_strategies_sorted_by_total_profit(combinations_of_purchased_shares)
     best_strategy = strategies_sorted_by_total_profit[0]
-    print(best_strategy["purchased_shares"])
-    print(f"Total cost : {best_strategy['total_cost']:.2f} €")
+    total_cost = 0
+    for share in best_strategy["shares"]:
+        print(f"{share['name']} : {share['price']:.2f} € x {share['profit_rate']:.2f} % = {share['profit']:.2f} €")
+        total_cost += share["price"]
+    print(f"\nTotal cost : {total_cost:.2f} €")
     print(f"Total profit : {best_strategy['total_profit']:.2f} €")
 
     end = datetime.now()
