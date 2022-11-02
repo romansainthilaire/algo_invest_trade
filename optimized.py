@@ -7,12 +7,12 @@ CSV_DELIMITER = ";"
 MAX_SPENDING = 500  # Maximum amount of money the client is willing to spend
 
 
-def get_shares_sorted_by_profit_rate():
-    """Gets all shares from the csv file and sorts them by profit rate.
+def get_shares():
+    """Gets all shares from the csv file.
        Each share is a dictionary with a name, a price, a profit rate (%) and a profit (euros).
 
     Returns:
-        A list of shares sorted by profit rate.
+        A list of shares.
     """
     shares = []
     with open(Path(__file__).parent / CSV_FILE_NAME, mode="r", encoding="utf-8") as csv_file:
@@ -32,6 +32,16 @@ def get_shares_sorted_by_profit_rate():
                     })
             except ValueError:
                 continue
+    return shares
+
+
+def get_shares_sorted_by_profit_rate():
+    """Gets all shares from the csv file and sorts them by profit rate.
+
+    Returns:
+        A list of shares sorted by profit rate.
+    """
+    shares = get_shares()
     return sorted(shares, key=lambda share: -share["profit_rate"])
 
 
