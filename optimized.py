@@ -90,4 +90,4 @@ if __name__ == "__main__":
     total_size = 0
     for stat in snapshot.statistics("lineno"):
         total_size += stat.size
-    print(f"{total_size / 1000000:.0f} Mb")
+    print(f"{total_size / 1000:.0f} kb")
