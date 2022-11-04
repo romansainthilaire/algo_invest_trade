@@ -83,11 +83,7 @@ if __name__ == "__main__":
     print(f"Total profit : {total_profit:.2f} €")
 
     end = datetime.now()
-    snapshot = tracemalloc.take_snapshot()
+    current, peak = tracemalloc.get_traced_memory()
 
     print(f"\n{(end - start).total_seconds():.3f} seconds")
-
-    total_size = 0
-    for stat in snapshot.statistics("lineno"):
-        total_size += stat.size
-    print(f"{total_size / 1000:.0f} kb")
+    print(f"{round(peak / 1000):,} ko".replace(",", " "))
