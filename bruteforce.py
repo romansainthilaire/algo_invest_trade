@@ -2,10 +2,9 @@ import csv
 from pathlib import Path
 from datetime import datetime
 from itertools import combinations
-import tracemalloc
 
-CSV_FILE_NAME = "dataset0.csv"
-CSV_DELIMITER = ";"
+CSV_FILE_NAME = "dataset_20.csv"
+CSV_DELIMITER = ","
 MAX_SPENDING = 500  # Maximum amount of money the client is willing to spend
 
 
@@ -102,7 +101,6 @@ def get_strategies_sorted_by_total_profit(combinations_of_purchased_shares):
 
 if __name__ == "__main__":
 
-    tracemalloc.start()
     start = datetime.now()
 
     shares = get_shares()
@@ -118,8 +116,6 @@ if __name__ == "__main__":
     print(f"Total profit : {best_strategy['total_profit']:.2f} €")
 
     end = datetime.now()
-    current, peak = tracemalloc.get_traced_memory()
 
     print(f"\n{len(strategies_sorted_by_total_profit):,} combinations analized".replace(",", " "))
     print(f"{(end - start).total_seconds():.2f} seconds")
-    print(f"{round(peak / 1000000):,} Mo".replace(",", " "))

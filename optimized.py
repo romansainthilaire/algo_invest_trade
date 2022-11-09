@@ -1,10 +1,9 @@
 import csv
 from pathlib import Path
 from datetime import datetime
-import tracemalloc
 
-CSV_FILE_NAME = "dataset1.csv"
-CSV_DELIMITER = ";"
+CSV_FILE_NAME = "dataset_10000.csv"
+CSV_DELIMITER = ","
 MAX_SPENDING = 500  # Maximum amount of money the client is willing to spend
 
 
@@ -68,7 +67,6 @@ def get_purchased_shares(shares):
 
 if __name__ == "__main__":
 
-    tracemalloc.start()
     start = datetime.now()
 
     shares = get_shares_sorted_by_profit_rate()
@@ -83,7 +81,5 @@ if __name__ == "__main__":
     print(f"Total profit : {total_profit:.2f} €")
 
     end = datetime.now()
-    current, peak = tracemalloc.get_traced_memory()
 
-    print(f"\n{(end - start).total_seconds():.3f} seconds")
-    print(f"{round(peak / 1000):,} ko".replace(",", " "))
+    print(f"\n{(end - start).total_seconds():.2f} seconds")
